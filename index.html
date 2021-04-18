@@ -1,151 +1,321 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-  <meta charset="UTF-8">
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      type="text/javascript"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"
+      type="text/javascript"
+    ></script>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js" type="text/javascript"></script>
+    <script src="https://d3plus.org/js/d3.min.js"></script>
+    <script src="https://d3plus.org/js/d3plus.min.js"></script>
+    <script src="https://d3plus.org/js/d3plus-plot.v1.0.full.min.js"></script>
 
-  <script src="https://d3plus.org/js/d3.min.js"></script>
-  <script src="https://d3plus.org/js/d3plus.min.js"></script>
-  <script src="https://d3plus.org/js/d3plus-plot.v1.0.full.min.js"></script>
-  
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
 
-  <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-
-<body>
-  <div>
-    <b>Stackblitz: </b><a
-      href="https://web-platform-bsqc.stackblitz.io/">https://web-platform-bsqctw.stackblitz.io/</a>
-    <br>
-    <b>Github: </b><a
-      href="https://github.com/mcontrra0/07mbig_visualizacion_datos">https://github.com/mcontrra0/07mbig_visualizacion_datos</a>
-    <br>
-    <b>Nombre: </b>Marco Antonio Contreras Ramirez
-  </div>
-  <br>
-  <div class="tab">
-    <button class="tablinks" onclick="openAG(event, 'AG1')" id="defaultOpen">AG1</button>
-    <button class="tablinks" onclick="openAG(event, 'AG2')">AG2</button>
-    <button class="tablinks" onclick="openAG(event, 'AG3')">AG3</button>
-    <button class="tablinks" onclick="openAG(event, 'Seminario')">Seminario</button>
-  </div>
-
-  <!-- Tab content -->
-  <div id="AG1" class="tabcontent">
-    <div class="container">
-      <h2>GoogleSheets Charts</h2>
-      <iframe width="600" height="371" seamless frameborder="0" scrolling="no"
-        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSTt-WbhSmsjdL6sLsWDd2MjOHDgq-dIHcgIfq1ZV3d08MHIc4Y0W0vMZ2mDdU1QrAJUzQ-M4VOQ5CH/pubchart?oid=174876492&amp;format=interactive"></iframe>
-      <br>
-      <iframe width="600" height="371" seamless frameborder="0" scrolling="no"
-        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSTt-WbhSmsjdL6sLsWDd2MjOHDgq-dIHcgIfq1ZV3d08MHIc4Y0W0vMZ2mDdU1QrAJUzQ-M4VOQ5CH/pubchart?oid=113496303&amp;format=interactive"></iframe>
-      <br>
-      <iframe width="600" height="371" seamless frameborder="0" scrolling="no"
-        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSTt-WbhSmsjdL6sLsWDd2MjOHDgq-dIHcgIfq1ZV3d08MHIc4Y0W0vMZ2mDdU1QrAJUzQ-M4VOQ5CH/pubchart?oid=1931101385&amp;format=interactive"></iframe>
+  <body>
+    <div>
+      <b>Stackblitz: </b
+      ><a href="https://web-platform-bsqc.stackblitz.io/"
+        >https://web-platform-bsqctw.stackblitz.io/</a
+      >
+      <br />
+      <b>Github: </b
+      ><a href="https://github.com/mcontrra0/07mbig_visualizacion_datos"
+        >https://github.com/mcontrra0/07mbig_visualizacion_datos</a
+      >
+      <br />
+      <b>Nombre: </b>Marco Antonio Contreras Ramirez
     </div>
-    <div class="container">
-      <h2>Datawrapper charts</h2>
-      <iframe width="600" height="371" title="Emisiones CO2" aria-label="chart" id="datawrapper-chart-qYwVZ"
-        src="https://datawrapper.dwcdn.net/qYwVZ/1/" scrolling="no" frameborder="0"
-        style="width: 0; min-width: 100% !important; border: none;" height="400"></iframe>
-      <br>
-      <iframe width="600" height="371" title="Top 10 emisiones CO2 en 2018 " aria-label="Split Bars"
-        id="datawrapper-chart-evwpt" src="https://datawrapper.dwcdn.net/evwpt/1/" scrolling="no" frameborder="0"
-        style="width: 0; min-width: 100% !important; border: none;" height="451"></iframe>
+    <br />
+    <div class="tab">
+      <button class="tablinks" onclick="openAG(event, 'AG1')" id="defaultOpen">
+        AG1
+      </button>
+      <button class="tablinks" onclick="openAG(event, 'AG2')">AG2</button>
+      <button class="tablinks" onclick="openAG(event, 'AG3')">AG3</button>
+      <button class="tablinks" onclick="openAG(event, 'Seminario')">
+        Seminario
+      </button>
     </div>
-  </div>
 
-  <div id="AG2" class="tabcontent">
-    <div class="container">
-      <h2>Tableau</h2>
-      <h3>Dashboard</h3>
-      <div class='tableauPlaceholder' id='viz1617360339356' style='position: relative'><noscript><a
-            href='#'><img alt='Dashboard AG2 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;AG&#47;AG2_16173036653150&#47;DashboardAG2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='AG2_16173036653150&#47;DashboardAG2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;AG&#47;AG2_16173036653150&#47;DashboardAG2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='es' /><param name='filter' value='publish=yes' /></object>
+    <!-- Tab content -->
+    <div id="AG1" class="tabcontent">
+      <div class="container">
+        <h2>GoogleSheets Charts</h2>
+        <iframe
+          width="600"
+          height="371"
+          seamless
+          frameborder="0"
+          scrolling="no"
+          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSTt-WbhSmsjdL6sLsWDd2MjOHDgq-dIHcgIfq1ZV3d08MHIc4Y0W0vMZ2mDdU1QrAJUzQ-M4VOQ5CH/pubchart?oid=174876492&amp;format=interactive"
+        ></iframe>
+        <br />
+        <iframe
+          width="600"
+          height="371"
+          seamless
+          frameborder="0"
+          scrolling="no"
+          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSTt-WbhSmsjdL6sLsWDd2MjOHDgq-dIHcgIfq1ZV3d08MHIc4Y0W0vMZ2mDdU1QrAJUzQ-M4VOQ5CH/pubchart?oid=113496303&amp;format=interactive"
+        ></iframe>
+        <br />
+        <iframe
+          width="600"
+          height="371"
+          seamless
+          frameborder="0"
+          scrolling="no"
+          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSTt-WbhSmsjdL6sLsWDd2MjOHDgq-dIHcgIfq1ZV3d08MHIc4Y0W0vMZ2mDdU1QrAJUzQ-M4VOQ5CH/pubchart?oid=1931101385&amp;format=interactive"
+        ></iframe>
       </div>
-
-
-    </div>
-    <div class="container">
-      <h3>History</h3>
-
-      <div class='tableauPlaceholder' id='viz1617376885264' style='position: relative'><noscript><a
-            href='#'><img alt='Sony vs Warner ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;AG&#47;AG2_16173036653150&#47;SonyvsWarner&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='AG2_16173036653150&#47;SonyvsWarner' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;AG&#47;AG2_16173036653150&#47;SonyvsWarner&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='es' /><param name='filter' value='publish=yes' /></object>
+      <div class="container">
+        <h2>Datawrapper charts</h2>
+        <iframe
+          width="600"
+          height="371"
+          title="Emisiones CO2"
+          aria-label="chart"
+          id="datawrapper-chart-qYwVZ"
+          src="https://datawrapper.dwcdn.net/qYwVZ/1/"
+          scrolling="no"
+          frameborder="0"
+          style="width: 0; min-width: 100% !important; border: none;"
+          height="400"
+        ></iframe>
+        <br />
+        <iframe
+          width="600"
+          height="371"
+          title="Top 10 emisiones CO2 en 2018 "
+          aria-label="Split Bars"
+          id="datawrapper-chart-evwpt"
+          src="https://datawrapper.dwcdn.net/evwpt/1/"
+          scrolling="no"
+          frameborder="0"
+          style="width: 0; min-width: 100% !important; border: none;"
+          height="451"
+        ></iframe>
       </div>
-
     </div>
 
-    <div class="container">
-      <h3>Dispersion con burbujas</h3>
-
-      <div class='tableauPlaceholder' id='viz1617377116493' style='position: relative'><noscript><a
-            href='#'><img alt='Dispersión con burbujas: Films por IMDB Rating + IMDB Votes + Presupuesto ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;AG&#47;AG2_16173036653150&#47;DispersinconburbujasFilmsporIMDBRatingIMDBVotesPresupuesto_1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='AG2_16173036653150&#47;DispersinconburbujasFilmsporIMDBRatingIMDBVotesPresupuesto_1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;AG&#47;AG2_16173036653150&#47;DispersinconburbujasFilmsporIMDBRatingIMDBVotesPresupuesto_1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='es' /><param name='filter' value='publish=yes' /></object>
-      </div>
-
-    </div>
-  </div>
-
-  <div id="AG3" class="tabcontent">
-    <div class="container">
-      <h2>Python</h2>
-      <b>Google Collab: </b><a
-        href="https://colab.research.google.com/drive/1RUK9p7UNXF3qzxQkAylJN7zoJAvDskq-?usp=sharing">https://colab.research.google.com/drive/1RUK9p7UNXF3qzxQkAylJN7zoJAvDskq-?usp=sharing</a>
-      <br>
-    </div>
-    <div class="container">
-      <h2>Javascript</h2>
-      <div class="container-ag3">
-        <b class="title-ag3">Gráfico de Columnas con D3Plus</b>
-        <div id="viz1">
+    <div id="AG2" class="tabcontent">
+      <div class="container">
+        <h2>Tableau</h2>
+        <h3>Dashboard</h3>
+        <div
+          class="tableauPlaceholder"
+          id="viz1617360339356"
+          style="position: relative"
+        >
+          <noscript
+            ><a href="#"
+              ><img
+                alt="Dashboard AG2 "
+                src="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;AG&#47;AG2_16173036653150&#47;DashboardAG2&#47;1_rss.png"
+                style="border: none"/></a></noscript
+          ><object class="tableauViz" style="display:none;"
+            ><param
+              name="host_url"
+              value="https%3A%2F%2Fpublic.tableau.com%2F"/>
+            <param name="embed_code_version" value="3"/>
+            <param name="site_root" value=""/><param
+              name="name"
+              value="AG2_16173036653150&#47;DashboardAG2"/><param
+              name="tabs"
+              value="no"/><param name="toolbar" value="yes"/><param
+              name="static_image"
+              value="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;AG&#47;AG2_16173036653150&#47;DashboardAG2&#47;1.png"/>
+            <param name="animate_transition" value="yes"/><param
+              name="display_static_image"
+              value="yes"/><param name="display_spinner" value="yes"/><param
+              name="display_overlay"
+              value="yes"/><param name="display_count" value="yes"/><param
+              name="language"
+              value="es"/><param name="filter" value="publish=yes"
+          /></object>
         </div>
       </div>
-      <div class="container-ag3">
-        <b class="title-ag3">Reutilizar código. Barras</b>
-        <div id="viz2">
+      <div class="container">
+        <h3>History</h3>
+
+        <div
+          class="tableauPlaceholder"
+          id="viz1617376885264"
+          style="position: relative"
+        >
+          <noscript
+            ><a href="#"
+              ><img
+                alt="Sony vs Warner "
+                src="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;AG&#47;AG2_16173036653150&#47;SonyvsWarner&#47;1_rss.png"
+                style="border: none"/></a></noscript
+          ><object class="tableauViz" style="display:none;"
+            ><param
+              name="host_url"
+              value="https%3A%2F%2Fpublic.tableau.com%2F"/>
+            <param name="embed_code_version" value="3"/>
+            <param name="site_root" value=""/><param
+              name="name"
+              value="AG2_16173036653150&#47;SonyvsWarner"/><param
+              name="tabs"
+              value="no"/><param name="toolbar" value="yes"/><param
+              name="static_image"
+              value="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;AG&#47;AG2_16173036653150&#47;SonyvsWarner&#47;1.png"/>
+            <param name="animate_transition" value="yes"/><param
+              name="display_static_image"
+              value="yes"/><param name="display_spinner" value="yes"/><param
+              name="display_overlay"
+              value="yes"/><param name="display_count" value="yes"/><param
+              name="language"
+              value="es"/><param name="filter" value="publish=yes"
+          /></object>
         </div>
       </div>
-      <div class="container-ag3">
-        <b class="title-ag3">Caja y Bigotes o Burbujas</b>
-        <div id="viz3">
+
+      <div class="container">
+        <h3>Dispersion con burbujas</h3>
+
+        <div
+          class="tableauPlaceholder"
+          id="viz1617377116493"
+          style="position: relative"
+        >
+          <noscript
+            ><a href="#"
+              ><img
+                alt="Dispersión con burbujas: Films por IMDB Rating + IMDB Votes + Presupuesto "
+                src="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;AG&#47;AG2_16173036653150&#47;DispersinconburbujasFilmsporIMDBRatingIMDBVotesPresupuesto_1&#47;1_rss.png"
+                style="border: none"/></a></noscript
+          ><object class="tableauViz" style="display:none;"
+            ><param
+              name="host_url"
+              value="https%3A%2F%2Fpublic.tableau.com%2F"/>
+            <param name="embed_code_version" value="3"/>
+            <param name="site_root" value=""/><param
+              name="name"
+              value="AG2_16173036653150&#47;DispersinconburbujasFilmsporIMDBRatingIMDBVotesPresupuesto_1"/><param
+              name="tabs"
+              value="no"/><param name="toolbar" value="yes"/><param
+              name="static_image"
+              value="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;AG&#47;AG2_16173036653150&#47;DispersinconburbujasFilmsporIMDBRatingIMDBVotesPresupuesto_1&#47;1.png"/>
+            <param name="animate_transition" value="yes"/><param
+              name="display_static_image"
+              value="yes"/><param name="display_spinner" value="yes"/><param
+              name="display_overlay"
+              value="yes"/><param name="display_count" value="yes"/><param
+              name="language"
+              value="es"/><param name="filter" value="publish=yes"
+          /></object>
         </div>
       </div>
-
     </div>
-  </div>
 
-  <div id="Seminario" class="tabcontent">
-    <div class="container">
-      <h2>Power BI</h2>
-      <iframe width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=899924bb-c248-423c-90cd-fba7cd6160f5&autoAuth=true&ctid=cf36141c-ddd7-45a7-b073-111f66d0b30c&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXdlc3QtdXMtcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D" frameborder="0" allowFullScreen="true"></iframe>
+    <div id="AG3" class="tabcontent">
+      <div class="container">
+        <h2>Python</h2>
+        <b>Google Collab: </b
+        ><a
+          href="https://colab.research.google.com/drive/1RUK9p7UNXF3qzxQkAylJN7zoJAvDskq-?usp=sharing"
+          >https://colab.research.google.com/drive/1RUK9p7UNXF3qzxQkAylJN7zoJAvDskq-?usp=sharing</a
+        >
+        <br />
+      </div>
+      <div class="container">
+        <h2>Javascript</h2>
+        <div class="container-ag3">
+          <b class="title-ag3">Gráfico de Columnas con D3Plus</b>
+          <div id="viz1"></div>
+        </div>
+        <div class="container-ag3">
+          <b class="title-ag3">Reutilizar código. Barras</b>
+          <div id="viz2"></div>
+        </div>
+        <div class="container-ag3">
+          <b class="title-ag3">Caja y Bigotes o Burbujas</b>
+          <div id="viz3"></div>
+        </div>
+      </div>
     </div>
-  </div>
 
-</body>
-<script src="script.js" type="text/javascript"></script>
-<script type="text/javascript">
-  !function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();
-</script>
-<script>
-  document.getElementById("defaultOpen").click();
-</script>
-<script type='text/javascript'>
-  var divElement = document.getElementById('viz1617360339356');                    
-        var vizElement = divElement.getElementsByTagName('object')[0];                    
-        if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='1377px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                        
-        
-        var divElement2 = document.getElementById('viz1617377116493');                    
-        var vizElement2 = divElement2.getElementsByTagName('object')[0];                    
-        if ( divElement2.offsetWidth > 800 ) { vizElement2.style.width='1000px';vizElement2.style.height='827px';} else if ( divElement2.offsetWidth > 500 ) { vizElement2.style.width='1000px';vizElement2.style.height='827px';} else { vizElement2.style.width='100%';vizElement2.style.height='1377px';}                    
-        var scriptElement2 = document.createElement('script');                    scriptElement2.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';       
+    <div id="Seminario" class="tabcontent">
+      <div class="container">
+        <h2>Suicides</h2>
+        <iframe
+          width="1140"
+          height="541.25"
+          src="https://app.powerbi.com/reportEmbed?reportId=899924bb-c248-423c-90cd-fba7cd6160f5&autoAuth=true&ctid=cf36141c-ddd7-45a7-b073-111f66d0b30c&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXdlc3QtdXMtcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D"
+          frameborder="0"
+          allowfullscreen="true"
+        ></iframe>
+      </div>
+    </div>
+  </body>
+  <script src="script.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    !(function() {
+      "use strict";
+      window.addEventListener("message", function(a) {
+        if (void 0 !== a.data["datawrapper-height"])
+          for (var e in a.data["datawrapper-height"]) {
+            var t =
+              document.getElementById("datawrapper-chart-" + e) ||
+              document.querySelector("iframe[src*='" + e + "']");
+            t && (t.style.height = a.data["datawrapper-height"][e] + "px");
+          }
+      });
+    })();
+  </script>
+  <script>
+    document.getElementById("defaultOpen").click();
+  </script>
+  <script type="text/javascript">
+    var divElement = document.getElementById("viz1617360339356");
+    var vizElement = divElement.getElementsByTagName("object")[0];
+    if (divElement.offsetWidth > 800) {
+      vizElement.style.width = "1000px";
+      vizElement.style.height = "827px";
+    } else if (divElement.offsetWidth > 500) {
+      vizElement.style.width = "1000px";
+      vizElement.style.height = "827px";
+    } else {
+      vizElement.style.width = "100%";
+      vizElement.style.height = "1377px";
+    }
+    var scriptElement = document.createElement("script");
+    scriptElement.src = "https://public.tableau.com/javascripts/api/viz_v1.js";
 
-       var divElement3 = document.getElementById('viz1617376885264');                    var vizElement3 = divElement3.getElementsByTagName('object')[0];                    vizElement3.style.width='1016px';vizElement3.style.height='991px';                    var scriptElement3 = document.createElement('script');                    scriptElement3.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+    var divElement2 = document.getElementById("viz1617377116493");
+    var vizElement2 = divElement2.getElementsByTagName("object")[0];
+    if (divElement2.offsetWidth > 800) {
+      vizElement2.style.width = "1000px";
+      vizElement2.style.height = "827px";
+    } else if (divElement2.offsetWidth > 500) {
+      vizElement2.style.width = "1000px";
+      vizElement2.style.height = "827px";
+    } else {
+      vizElement2.style.width = "100%";
+      vizElement2.style.height = "1377px";
+    }
+    var scriptElement2 = document.createElement("script");
+    scriptElement2.src = "https://public.tableau.com/javascripts/api/viz_v1.js";
 
-        vizElement.parentNode.insertBefore(scriptElement, vizElement); 
-        vizElement2.parentNode.insertBefore(scriptElement2, vizElement2); 
-        vizElement3.parentNode.insertBefore(scriptElement3, vizElement3);            
+    var divElement3 = document.getElementById("viz1617376885264");
+    var vizElement3 = divElement3.getElementsByTagName("object")[0];
+    vizElement3.style.width = "1016px";
+    vizElement3.style.height = "991px";
+    var scriptElement3 = document.createElement("script");
+    scriptElement3.src = "https://public.tableau.com/javascripts/api/viz_v1.js";
+    vizElement.parentNode.insertBefore(scriptElement, vizElement);
 
-</script>
-
-
+    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+    vizElement2.parentNode.insertBefore(scriptElement2, vizElement2);
+    vizElement3.parentNode.insertBefore(scriptElement3, vizElement3);
+  </script>
 </html>
